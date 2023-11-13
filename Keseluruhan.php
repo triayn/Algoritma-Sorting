@@ -1,7 +1,7 @@
 <?php
 
 // Tria Yunita
-// pengurutan dilakukan secara Ascending (Bilangan terkecil ke terbesar)
+// Pengurutan dilakukan secara Ascending (Bilangan terkecil ke terbesar)
 
 // Array awal
 $bilangan = array(33, 12, 45, 6, 78, 23, 90, 1, 8, 56, 72);
@@ -59,7 +59,8 @@ function InsertionSort($data)
         // Menampilkan elemen yang akan disisipkan sebagai kunci($nilai)
         $nilai = $data[$i];
         $j = $i - 1;
-        // Memindahkan elemen-elemen yang lebih besar dibangdingkan dari kunci($nilai) ke posisi yang benar
+        // Memindahkan elemen-elemen yang lebih besar dibangdingkan dari 
+        // kunci($nilai) ke posisi yang benar
         while ($j >= 0 && $data[$j] > $nilai) {
             $data[$j + 1] = $data[$j];
             $j = $j - 1;
@@ -82,22 +83,22 @@ function QuickSort($data)
     } else {
         // Memilih elemen pertama sebagai pivot
         $pivot = $data[0];
-        $left = $right = array();
+        $kiri = $kanan = array();
 
         // Memisahkan elemen-elemen yang kurang dari pivot dan yang lebih besar dari pivot
         for ($i = 1; $i < count($data); $i++) {
             if ($data[$i] < $pivot) {
-                $left[] = $data[$i];
+                $kiri[] = $data[$i];
             } else {
-                $right[] = $data[$i];
+                $kanan[] = $data[$i];
             }
         }
         // Menggabungkan hasil pengurutan rekursif dari bagian kiri, pivot dan bagian kiri
-        return array_merge(QuickSort($left), array($pivot), QuickSort($right));
+        return array_merge(QuickSort($kiri), array($pivot), QuickSort($kanan));
     }
 }
 
-echo "Array Awal: " . implode(", ", $bilangan) . "\n";
+echo "Array Awal: " . implode(", ", $bilangan) . "\n \n";
 
 // Menampilkan hasil sorting menggunakan Bubble Sort
 echo "Bubble Sort: " . implode(", ", BubbleSort($bilangan)) . "\n";
@@ -109,7 +110,7 @@ echo "Selection Sort: " . implode(", ", SelectionSort($bilangan)) . "\n";
 echo "Insertion Sort: " . implode(", ", InsertionSort($bilangan)) . "\n";
 
 // Menampilkan hasil sorting menggunakan Quick Sort
-echo "Quick Sort: " . implode(", ", QuickSort($bilangan)) . "\n";
+echo "Quick Sort: " . implode(", ", QuickSort($bilangan)) . "\n \n";
 
 // Pengukuran waktu untuk Bubble Sort
 $start_time = microtime(true);
@@ -140,3 +141,4 @@ echo "Waktu eksekusi Bubble Sort: " . $execution_time_bubble . " detik\n";
 echo "Waktu eksekusi Selection Sort: " . $execution_time_selection . " detik\n";
 echo "Waktu eksekusi Insertion Sort: " . $execution_time_insertion . " detik\n";
 echo "Waktu eksekusi Quick Sort: " . $execution_time_quick . " detik\n";
+?>
